@@ -10,7 +10,12 @@ namespace CurrencyConverter
     {
         static void Main(string[] args)
         {
-            float currencyDollar = 83, currencyEuro = 93, currencyDollarToEuro = 1.12f;
+            float currencyRubToUsd = 0.012f;
+            float currencyRubToEur = 0.0107f;
+            float currencyUsdToRub = 83;
+            float currencyUsdToEur = 0.89f;
+            float currencyEurToRub = 93;
+            float currencyEurToUsd = 1.12f;
             float rubBalance = 92745f;
             float dollarBalance = 3471f;
             float euroBalance = 734f;
@@ -18,7 +23,7 @@ namespace CurrencyConverter
             char userInput;
             float transferAmount;
 
-            while (!isExit)
+            while (isExit == false)
             {
                 Console.WriteLine("Выберите, куда хотите сконвертировать валюту:" +
                                    "\n---------------------------------------------" +
@@ -47,7 +52,7 @@ namespace CurrencyConverter
                         if (transferAmount <= rubBalance)
                         {
                             rubBalance -= transferAmount;
-                            dollarBalance += transferAmount / currencyDollar;
+                            dollarBalance += transferAmount * currencyRubToUsd;
                             Console.WriteLine("Успешно!");
                             break;
                         }
@@ -61,7 +66,7 @@ namespace CurrencyConverter
                         if (transferAmount <= rubBalance)
                         {
                             rubBalance -= transferAmount;
-                            euroBalance += transferAmount / currencyEuro;
+                            euroBalance += transferAmount * currencyRubToEur;
                             Console.WriteLine("Успешно!");
                             break;
                         }
@@ -75,7 +80,7 @@ namespace CurrencyConverter
                         if (transferAmount <= dollarBalance)
                         {
                             dollarBalance -= transferAmount;
-                            rubBalance += transferAmount * currencyDollar;
+                            rubBalance += transferAmount * currencyUsdToRub;
                             Console.WriteLine("Успешно!");
                             break;
                         }
@@ -89,7 +94,7 @@ namespace CurrencyConverter
                         if (transferAmount <= dollarBalance)
                         {
                             dollarBalance -= transferAmount;
-                            euroBalance += transferAmount / currencyDollarToEuro;
+                            euroBalance += transferAmount * currencyUsdToEur;
                             Console.WriteLine("Успешно!");
                             break;
                         }
@@ -103,7 +108,7 @@ namespace CurrencyConverter
                         if (transferAmount <= euroBalance)
                         {
                             euroBalance -= transferAmount;
-                            rubBalance += transferAmount * currencyEuro;
+                            rubBalance += transferAmount * currencyEurToRub;
                             Console.WriteLine("Успешно!");
                             break;
                         }
@@ -117,7 +122,7 @@ namespace CurrencyConverter
                         if (transferAmount <= euroBalance)
                         {
                             euroBalance -= transferAmount;
-                            dollarBalance += transferAmount * currencyDollarToEuro;
+                            dollarBalance += transferAmount * currencyEurToUsd;
                             Console.WriteLine("Успешно!");
                             break;
                         }
